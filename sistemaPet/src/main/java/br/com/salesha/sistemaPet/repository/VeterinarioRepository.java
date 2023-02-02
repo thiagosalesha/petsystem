@@ -8,4 +8,6 @@ import br.com.salesha.sistemaPet.model.Veterinario;
 @Repository
 public interface VeterinarioRepository extends JpaRepository<Veterinario, Integer>{
 
+	Veterinario findByCrmv(int crmv);
+
 }
