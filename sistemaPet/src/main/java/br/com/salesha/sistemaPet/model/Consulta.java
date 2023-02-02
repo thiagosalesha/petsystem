@@ -16,10 +16,10 @@ public class Consulta {
 	private int idConsulta;
 	private String data;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Veterinario veterinario;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Paciente paciente;
 
 	public Consulta(int idConsulta, String data, Veterinario veterinario, Paciente paciente) {

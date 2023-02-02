@@ -5,7 +5,7 @@ import br.com.salesha.sistemaPet.model.Paciente;
 import br.com.salesha.sistemaPet.repository.PacienteRepository;
 import br.com.salesha.sistemaPet.repository.VeterinarioRepository;
 
-public class RequisicaoAgendamento {
+public class RegistraAgendamentoDTO {
 	private String tutor;
 	private String cpfTutor;
 	private String nomePaciente;
@@ -13,7 +13,7 @@ public class RequisicaoAgendamento {
 	private String data;
 	
 
-	public RequisicaoAgendamento(String tutor, String cpfTutor, String nomePaciente, String data,
+	public RegistraAgendamentoDTO(String tutor, String cpfTutor, String nomePaciente, String data,
 			String veterinario) {
 		this.tutor = tutor;
 		this.cpfTutor = cpfTutor;
@@ -23,20 +23,23 @@ public class RequisicaoAgendamento {
 		
 	}
 
-	public RequisicaoAgendamento() {
+	public RegistraAgendamentoDTO() {
 	}
 	
 	public Consulta toConsulta(VeterinarioRepository veterinarioRepository, PacienteRepository pacienteRepository) {
 		Consulta consulta = new Consulta();
 		consulta.setData(data);
 		Paciente paciente = new Paciente(nomePaciente, tutor, cpfTutor);
+		
 		if (pacienteRepository.findByCpf(paciente.getCpf()) == null) {
 			pacienteRepository.save(paciente);
+			paciente = pacienteRepository.findByCpf(paciente.getCpf());
+		} else{
+			paciente = pacienteRepository.findByCpf(paciente.getCpf());
 		}
 		consulta.setPaciente(paciente);
 		consulta.setVeterinario(veterinarioRepository.getReferenceById(Integer.parseInt(veterinario.substring(0, 4))));
 		System.out.println("Passou aqui");
-		pacienteRepository.flush();
 		return consulta;
 	}
 

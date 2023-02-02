@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.com.salesha.sistemaPet.dto.RequisicaoAgendamento;
+import br.com.salesha.sistemaPet.dto.RegistraAgendamentoDTO;
 import br.com.salesha.sistemaPet.model.Consulta;
 import br.com.salesha.sistemaPet.model.Veterinario;
 import br.com.salesha.sistemaPet.repository.ConsultaRepository;
@@ -28,7 +28,7 @@ public class AgendamentoController {
 	PacienteRepository pacienteRepository;
 
 	@GetMapping("/agendar")
-	public String agendar(Model model, RequisicaoAgendamento requisicao) {
+	public String agendar(Model model, RegistraAgendamentoDTO requisicao) {
 		
 		List<Veterinario> listaVet =  veterinarioRepository.findAll();
 		
@@ -42,13 +42,13 @@ public class AgendamentoController {
 	}
 	
 	@PostMapping("/registrarConsulta")
-	public String oi(RequisicaoAgendamento agendamento){
+	public String oi(RegistraAgendamentoDTO agendamento){
 		
 		Consulta consult = agendamento.toConsulta(veterinarioRepository, pacienteRepository);
-		System.out.println(consult);
+		System.out.println("Antes da persistencia");
 		consultaRepository.save(consult);
 		System.out.println("Persistiu");
-		return "teste";
+		return "agendamento";
 	}
 
 }
