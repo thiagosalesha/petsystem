@@ -16,7 +16,7 @@ import br.com.salesha.sistemaPet.repository.PacienteRepository;
 import br.com.salesha.sistemaPet.repository.VeterinarioRepository;
 
 @Controller
-public class AgendamentoController {
+public class ConsultaController {
 	
 	@Autowired
 	VeterinarioRepository veterinarioRepository;
@@ -41,8 +41,21 @@ public class AgendamentoController {
 		return "agendamento";
 	}
 	
+	
+	@GetMapping("listaConsulta")
+	public String listaConsulta(Model model) {
+		
+		List<Consulta> listaConsultas = consultaRepository.findAll();
+		
+		model.addAttribute("listaConsulta", listaConsultas);
+		
+	
+		return "consultas";
+	}
+	
+	
 	@PostMapping("/registrarConsulta")
-	public String oi(RegistraAgendamentoDTO agendamento){
+	public String registraConsulta(RegistraAgendamentoDTO agendamento){
 		
 		Consulta consult = agendamento.toConsulta(veterinarioRepository, pacienteRepository);
 		System.out.println("Antes da persistencia");
