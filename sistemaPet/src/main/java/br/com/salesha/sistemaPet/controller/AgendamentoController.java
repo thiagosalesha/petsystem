@@ -1,6 +1,5 @@
 package br.com.salesha.sistemaPet.controller;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.com.salesha.sistemaPet.dto.RequisicaoAgendamento;
-import br.com.salesha.sistemaPet.modelo.Veterinario;
+import br.com.salesha.sistemaPet.model.Consulta;
+import br.com.salesha.sistemaPet.model.Veterinario;
+import br.com.salesha.sistemaPet.repository.ConsultaRepository;
+import br.com.salesha.sistemaPet.repository.PacienteRepository;
 import br.com.salesha.sistemaPet.repository.VeterinarioRepository;
 
 @Controller
@@ -18,6 +20,12 @@ public class AgendamentoController {
 	
 	@Autowired
 	VeterinarioRepository veterinarioRepository;
+	
+	@Autowired
+	ConsultaRepository consultaRepository;
+	
+	@Autowired
+	PacienteRepository pacienteRepository;
 
 	@GetMapping("/agendar")
 	public String agendar(Model model, RequisicaoAgendamento requisicao) {
@@ -33,9 +41,13 @@ public class AgendamentoController {
 		return "agendamento";
 	}
 	
-	@PostMapping("/enviar")
+	@PostMapping("/registrarConsulta")
 	public String oi(RequisicaoAgendamento agendamento){
-		System.out.println(agendamento.getTutor());
+		
+		Consulta consult = agendamento.toConsulta(veterinarioRepository, pacienteRepository);
+		System.out.println(consult);
+		consultaRepository.save(consult);
+		System.out.println("Persistiu");
 		return "teste";
 	}
 

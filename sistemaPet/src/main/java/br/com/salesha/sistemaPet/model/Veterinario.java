@@ -1,4 +1,4 @@
-package br.com.salesha.sistemaPet.modelo;
+package br.com.salesha.sistemaPet.model;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Veterinario {
 	private String nome;
 	private String especialidade;
 
-	@OneToMany
+	@OneToMany(mappedBy = "veterinario")
 	private List<Consulta> consult;
 	
 	public Veterinario() {
@@ -77,7 +77,7 @@ public class Veterinario {
 
 	@Override
 	public String toString() {
-		return crmv + " | " + nome + " | " + especialidade;
+		return crmv + " |- " + nome + " | " + especialidade;
 	}
 
 

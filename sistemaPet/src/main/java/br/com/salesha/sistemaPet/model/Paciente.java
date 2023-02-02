@@ -1,4 +1,4 @@
-package br.com.salesha.sistemaPet.modelo;
+package br.com.salesha.sistemaPet.model;
 
 import java.util.List;
 
@@ -16,12 +16,11 @@ public class Paciente {
 	private String tutor;
 	private String cpf;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "paciente")
 	private List<Consulta> consultas;
 	
 	
-	public Paciente(int id, String nomeAnimal, String tutor, String cpf) {
-		this.id = id;
+	public Paciente(String nomeAnimal, String tutor, String cpf) {
 		this.nomeAnimal = nomeAnimal;
 		this.tutor = tutor;
 		this.cpf = cpf;
@@ -80,6 +79,14 @@ public class Paciente {
 	public void setConsultas(List<Consulta> consultas) {
 		this.consultas = consultas;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Paciente [id=" + id + ", nomeAnimal=" + nomeAnimal + ", tutor=" + tutor + ", cpf=" + cpf
+				+ ", consultas=" + consultas + "]";
+	}
+	
 	
 	
 	
