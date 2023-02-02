@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=devicl {
+				e-width, initial-scale=1">
+<title>Sistema Pet - Identificação Veterinário</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<style type="text/css">
+.principal {
+	justify-content: space-evenly;
+}
+</style>
+
+
+</head>
+
+<body>
+	<div class="container">
+		<header
+			class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+			<a href="/"
+				class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+				<svg class="bi me-2" width="40" height="32">
+						<use xlink:href="#bootstrap"></use></svg> <span class="fs-4">Sistema
+					PET</span>
+			</a>
+
+			<ul class="nav nav-pills">
+				<li class="nav-item"><a href="#" class="nav-link active"
+					aria-current="page">Início</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">Agendar
+						Consultas</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">Consultas</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">Veterinários</a></li>
+			</ul>
+		</header>
+
+		<main>
+			<section>
+				<form action="/veterinario/prontuario" method="post">
+					<div class="row g-3 principal">
+
+						<div class="col-auto">
+							<label for="static2" class="visually-hidden">TEXTO</label> <input
+								type="text" readonly class="form-control-plaintext" id="static2"
+								value="CRMV:">
+						</div>
+						<div class="col-auto">
+							<label for="inputPassword2" class="visually-hidden">CRMV</label>
+							<input type="text" class="form-control" name="crmv" id="crmv"
+								placeholder="CRMV">
+						</div>
+						<div class="col-auto">
+							<button type="submit" class="btn btn-primary mb-3">Buscar Prontuários
+							</button>
+						</div>
+					</div>
+				</form>
+			</section>
+
+			<section>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">CRMV</th>
+							<th scope="col">Nome</th>
+							<th scope="col">Especialidade</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="veterinario : ${listaVeterinario}">
+							<th scope="row" th:text="${veterinario.crmv}"></th>
+							<td th:text="${veterinario.nome}"></td>
+							<td th:text="${veterinario.especialidade}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+		</main>
+	</div>
+
+</body>
+</html>
