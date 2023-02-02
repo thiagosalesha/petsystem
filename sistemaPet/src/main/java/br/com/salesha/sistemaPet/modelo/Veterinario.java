@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Veterinario {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	private int crmv;
 	private String nome;
 	private String especialidade;
@@ -71,6 +71,13 @@ public class Veterinario {
 
 	public void setConsult(List<Consulta> consult) {
 		this.consult = consult;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return crmv + " | " + nome + " | " + especialidade;
 	}
 
 
