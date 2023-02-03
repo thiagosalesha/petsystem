@@ -56,31 +56,18 @@ public class AgendarConsultaDTO {
 		this.paciente = paciente;
 	}
 	
+	/**
+	 * Método utilizado para conversão do DTO para Entidade
+	 * @param veterinario
+	 * @param paciente
+	 * @return
+	 */
 	public Consulta toConsulta(Veterinario veterinario, Paciente paciente) {
 		Consulta cslt = new Consulta();
 		cslt.setData(data);
 		cslt.setPaciente(paciente);
 		cslt.setVeterinario(veterinario);
 		return cslt;
-//		Consulta consulta = new Consulta();
-//		consulta.setData(data);
-//		Paciente pacient = null;
-//		System.out.println("CPF do Pacienete: " + pacient.getCpf());
-//		
-//		if (pacienteRepository.findByCpf(pacient.getCpf()) == null  && 
-//				pacienteRepository.findByTutor(pacient.getTutor()) == null) {
-//			System.out.println("Paciente Nao Existe");
-//			pacienteRepository.save(pacient);
-//			pacient = pacienteRepository.findByTutor(pacient.getTutor());
-//		} else{
-//			System.out.println("Paciente Existe");
-//			pacient = pacienteRepository.findByCpf(pacient.getCpf());
-//		}
-//		System.out.println("Pacienente Encontrado é: " + pacient);
-//		consulta.setPaciente(pacient);
-//		consulta.setVeterinario(veterinarioRepository.getReferenceById(Integer.parseInt(veterinario.substring(0, 4))));
-//		System.out.println("Passou aqui");
-//		return consulta;
 	}
 
 	@Override
