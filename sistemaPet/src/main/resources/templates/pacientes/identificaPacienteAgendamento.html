@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=devicl {
+					e-width, initial-scale=1">
+	<title>Sistema Pet - Identificação para Agendamento</title>
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+		crossorigin="anonymous">
+	<style type="text/css">
+	.principal {
+		justify-content: space-evenly;
+	}
+	</style>
+	
+	
+	</head>
+	
+	<body>
+		<div class="container">
+			<header
+				class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+				<a href="/"
+					class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+					<svg class="bi me-2" width="40" height="32">
+							<use xlink:href="#bootstrap"></use></svg> <span class="fs-4">Sistema
+						PET - Identifica Paciente</span>
+				</a>
+	
+				<ul class="nav nav-pills">
+					<li class="nav-item"><a href="/paciente" class="nav-link">Início  - Sistema Paciente</a></li>
+				</ul>
+			</header>
+	
+			<main>
+				<section>
+					<form action="/paciente/consultaAgendamento" method="post">
+						<div class="row g-3 principal">
+	
+							<div class="col-auto">
+								<label for="static2" class="visually-hidden">TEXTO</label> <input
+									type="text" readonly class="form-control-plaintext" id="static2"
+									value="CPF do Tutor:">
+							</div>
+							<div class="col-auto">
+								<label for="inputPassword2" class="visually-hidden">CPF</label>
+								<input type="text" class="form-control" name="cpf" id="cpf"
+									placeholder="CPF...">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary mb-3">Buscar Paciente
+								</button>
+							</div>
+						</div>
+					</form>
+				</section>
+	
+				<section>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col">Nome Paciente</th>
+								<th scope="col">Tutor</th>
+								<th scope="col">CPF</th>	
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="paciente : ${listaPaciente}">
+								<th scope="row" th:text="${paciente.id}"></th>
+								<td th:text="${paciente.nomeAnimal}"></td>
+								<td th:text="${paciente.tutor}"></td>
+								<td th:text="${paciente.cpf}"></td>
+							
+						</tbody>
+					</table>
+				</section>
+			</main>
+		</div>
+	
+	</body>
+</html>

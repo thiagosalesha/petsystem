@@ -31,6 +31,19 @@ public class Paciente {
 		this.tutor = tutor;
 		this.cpf = cpf;
 	}
+	
+	
+
+
+	public Paciente(int id, String nomeAnimal, String tutor, String cpf) {
+		super();
+		this.id = id;
+		this.nomeAnimal = nomeAnimal;
+		this.tutor = tutor;
+		this.cpf = cpf;
+	}
+
+
 
 
 	public Paciente() {
