@@ -8,6 +8,7 @@ public class RegistraPacienteDTO {
 	private String cpf;
 	private String nomePaciente;
 	
+
 	public RegistraPacienteDTO(String tutor, String cpf, String nomePaciente) {
 		this.tutor = tutor;
 		this.cpf = cpf;
@@ -58,6 +59,8 @@ public class RegistraPacienteDTO {
 	public void setNomePaciente(String nomePaciente) {
 		this.nomePaciente = nomePaciente;
 	}
+
+
 	
 	
 }

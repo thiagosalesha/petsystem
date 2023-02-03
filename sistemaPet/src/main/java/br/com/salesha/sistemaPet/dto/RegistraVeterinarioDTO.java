@@ -5,13 +5,13 @@ import br.com.salesha.sistemaPet.repository.VeterinarioRepository;
 
 public class RegistraVeterinarioDTO {
 	
-	private String nomeVeterinario;
+	private String nomeVet;
 	private String crmv;
 	private String especialidade;
 	
 	
-	public RegistraVeterinarioDTO(String nome, String crmv, String especialidade) {
-		this.nomeVeterinario = nome;
+	public RegistraVeterinarioDTO(String nomeVet, String crmv, String especialidade) {
+		this.nomeVet = nomeVet;
 		this.crmv = crmv;
 		this.especialidade = especialidade;
 	}
@@ -20,14 +20,13 @@ public class RegistraVeterinarioDTO {
 	public RegistraVeterinarioDTO() {
 	}
 
-
-	public String getNome() {
-		return nomeVeterinario;
+	public String getNomeVet() {
+		return nomeVet;
 	}
 
 
-	public void setNome(String nome) {
-		this.nomeVeterinario = nome;
+	public void setNomeVet(String nomeVet) {
+		this.nomeVet = nomeVet;
 	}
 
 
@@ -53,7 +52,7 @@ public class RegistraVeterinarioDTO {
 
 	public Veterinario toVeterinario() {
 		Veterinario veterinario = new Veterinario();
-		veterinario.setNome(nomeVeterinario);
+		veterinario.setNome(nomeVet);
 		veterinario.setCrmv(Integer.parseInt(crmv));
 		veterinario.setEspecialidade(especialidade);
 		

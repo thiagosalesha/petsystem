@@ -1,13 +1,13 @@
 package br.com.salesha.sistemaPet.model;
 
-import java.time.LocalDate;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Consulta {
@@ -21,6 +21,10 @@ public class Consulta {
 	
 	@ManyToOne
 	private Paciente paciente;
+	
+	@OneToMany(mappedBy = "consulta")
+	private List<Exames> exames;
+
 
 	public Consulta(int idConsulta, String data, Veterinario veterinario, Paciente paciente) {
 		this.idConsulta = idConsulta;

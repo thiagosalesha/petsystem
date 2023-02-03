@@ -16,17 +16,16 @@
           </a>
     
           <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Início</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Agendar Consultas</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Consultas</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Veterinários</a></li>
-          </ul>
+            <li class="nav-item"><a href="/paciente" class="nav-link">Início - Sistema Paciente</a></li>
+            <li class="nav-item"><a href="/paciente/identificacao" class="nav-link">Identificação de Paciente</a></li>
+           </ul>
         </header>
         
         <main>
             <div class="p-5 mb-4 bg-light rounded-3">
                 <div class="container-fluid py-1">
                   <h1 class="display-9 fw-bold">Consultas Agendadas</h1>
+                  <span>Lista de consultas do Pet: <span th:text="${paciente.nomeAnimal}"></span></span>
                   <div class="container p-3">
 	                  <div class="card mb-3" th:each="consulta : ${listaConsulta}">
 	                  	<div class="card-header" >Consulta</div>

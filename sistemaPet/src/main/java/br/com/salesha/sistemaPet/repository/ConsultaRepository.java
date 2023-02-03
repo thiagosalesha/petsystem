@@ -12,4 +12,6 @@ public interface ConsultaRepository extends JpaRepository<Consulta, Integer>{
 
 	List<Consulta> findByVeterinarioCrmv(int crmv);
 
+	List<Consulta> findByPacienteId(int id);
+
 }

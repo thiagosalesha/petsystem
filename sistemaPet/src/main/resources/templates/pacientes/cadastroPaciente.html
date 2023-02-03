@@ -16,10 +16,7 @@
           </a>
     
           <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Início</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Agendar Consultas</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Consultas</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Veterinários</a></li>
+            <li class="nav-item"><a href="/paciente" class="nav-link">Início - Sistema Paciente</a></li>
           </ul>
         </header>
         
@@ -28,7 +25,7 @@
                 <div class="container-fluid py-1">
                   <h1 class="display-9 fw-bold">Cadastrar Paciente</h1>
                   
-                  <form class="row g-3" action="/registraPaciente" method="POST">
+                  <form class="row g-3" action="/paciente/registraPaciente" method="POST" enctype="multipart/form-data">
                     
                     <div class="col-md-6">
                       <label for="nomeTutor" class="form-label">Tutor</label>
@@ -43,6 +40,12 @@
                     <div class="col-12">
                       <label for="nomePaciente" class="form-label">Paciente</label>
                       <input type="text" class="form-control" name="nomePaciente" id="nomePaciente"
+                       placeholder="Nome do Paciente">
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="petFoto" class="form-label">Foto do Paciente (Opcional)</label>
+                      <input type="file" class="form-control" name="petFoto" id="petFoto"
                        placeholder="Nome do Paciente">
                     </div>
                     

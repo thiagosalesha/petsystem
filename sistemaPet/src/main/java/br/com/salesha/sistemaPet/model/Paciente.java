@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,6 +16,11 @@ public class Paciente {
 	private String nomeAnimal;
 	private String tutor;
 	private String cpf;
+	
+	@OneToMany(mappedBy = "paciente")
+	private List<Exames> exames;
+	
+	
 	
 	@OneToMany(mappedBy = "paciente")
 	private List<Consulta> consultas;
@@ -81,13 +87,21 @@ public class Paciente {
 	}
 
 
+	public List<Exames> getExames() {
+		return exames;
+	}
+
+
+	public void setExames(List<Exames> exames) {
+		this.exames = exames;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Paciente [id=" + id + ", nomeAnimal=" + nomeAnimal + ", tutor=" + tutor + ", cpf=" + cpf
 				+ ", consultas=" + consultas + "]";
 	}
-	
-	
 	
 	
 
